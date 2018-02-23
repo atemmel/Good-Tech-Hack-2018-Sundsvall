@@ -12,55 +12,67 @@ function generateNodes()
   var words = [
     {
         "depth":"0",
+        "group":"Root",
         "name":"Root",
         "children":[
             {
                 "depth":"1",
+                "group":"A",
                 "name":"A"
             },
             {
                 "depth":"1",
+                "group":"B",
                 "name":"B",
                 "children":[
                     {
                         "depth":"2",
+                        "group":"B",
                         "name": "C"
                     },
                     {
                         "depth":"2",
+                        "group":"B",
                         "name": "D",
                         "children":[
                             {
                                 "depth":"3",
+                                "group":"B",
                                 "name": "E"
                             },
                             {
                                 "depth":"3",
+                                "group":"B",
                                 "name": "F"
                             }
                         ]
                     },
                     {
                         "depth":"2",
+                        "group":"B",
                         "name":"G"
                     }
                 ]
             },
             {
                 "depth":"1",
+                "group":"C",
                 "name":"H"
             },
             {
                 "depth":"1",
+                "group":"D",
                 "name":"I",
                 "children":[
                     {
                         "depth":"2",
+                        "group":"D",
                         "name":"J"
                     },
                     {
                         "depth":"2",
-                        "name":"K"
+                        "group":"D",
+                        "name":"J"
                     }
                 ]
             }
@@ -143,11 +155,12 @@ function generateNodes()
       .on("tick", tick)
       .charge(-500)
       .linkDistance(function(link){
-        var dist = 50 - (link.source.depth * 20);
+        var dist = 150 - (25)*(link.source.depth) - (25)*(link.target.depth);
+        console.log(dist);
         return dist;
       })
-      .friction(0.8)
-      .gravity(-0.01)
+      .friction(.8)
+      .gravity(0.05)
       .size([w, h - 160]);
 
 
@@ -191,22 +204,26 @@ function tick() {
 
 // Color leaf nodes orange, and packages white or blue.
 function color(d) {
-    switch(d.depth){
-
-    case '0':
-      return '#757575';
+    switch(d.group){ 
+            
+    case 'Root':
+      return '#cccccc';
       break;
 
-    case '1':
+    case 'A':
       return '#108bef';
       break;
 
-    case '2':
+    case 'B':
       return '#0fef13';
       break;
 
-    case '3':
+    case 'C':
       return '#ef380f';
+      break;
+            
+    case 'D':
+      return '#c935f2';
       break;
     }
 }
