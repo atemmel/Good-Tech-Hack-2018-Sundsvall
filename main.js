@@ -13,7 +13,7 @@ function generateNodes()
         "word":"Root",
         "children":[
             {
-                "group":"0",
+                "group":"1",
                 "name":"A"
             },
             {
@@ -21,25 +21,25 @@ function generateNodes()
                 "name":"B",
                 "children":[
                     {
-                        "group":"1",
+                        "group":"2",
                         "name": "C"
                     },
                     {
-                        "group":"1",
+                        "group":"2",
                         "name": "D",
                         "children":[
                             {
-                                "group":"1",
+                                "group":"3",
                                 "name": "E"
                             },
                             {
-                                "group":"1",
+                                "group":"3",
                                 "name": "F"
                             }
                         ]
                     },
                     {
-                        "group":"1",
+                        "group":"2",
                         "name":"G"
                     }
                 ]
@@ -49,7 +49,7 @@ function generateNodes()
                 "name":"H"
             },
             {
-                "group":"2",
+                "group":"1",
                 "name":"I",
                 "children":[
                     {
@@ -220,5 +220,5 @@ function generateNodes()
 
 function getRadius(node)
 {
-  return 40 - (node.group) * 10;
+  return 40 - (node.group.valueOf() * 10);
 }
