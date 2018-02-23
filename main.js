@@ -69,7 +69,7 @@ function generateNodes()
   ]
 
   var w = window.outerWidth,
-  	h =window.outerHeight,
+  	h = window.outerHeight,
   	radius = 10,
   	node,
   	link,
@@ -78,7 +78,7 @@ function generateNodes()
   var force = d3.layout.force()
   	.on("tick", tick)
   	.charge(function(d) { return -500; })
-  	.linkDistance(function(d) { return d.target._children ? 100 : 50; })
+  	.linkDistance(function(d) { return 50; })
   	.size([w, h - 160]);
 
   var svg = d3.select("#main").append("svg")
@@ -163,7 +163,7 @@ function generateNodes()
   	node.attr("cx", function(d) { return d.x; })
   		  .attr("cy", function(d) { return d.y; });
 
-      title.attr("transform", function(d){ return "translate("+d.x+","+d.y+")"; });
+      title.attr("transform", function(d){ return "translate("+(d.x + 20)+","+(d.y)+")"; });
   }
 
   // Color leaf nodes orange, and packages white or blue.
