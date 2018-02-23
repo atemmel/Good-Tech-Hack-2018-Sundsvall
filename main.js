@@ -30,7 +30,17 @@ function generateNodes()
             },
             {
                 "group":"s",
-                "name":"sub node 5"
+                "name":"sub node 5",
+                "children":[
+                    {
+                        "group":"s",
+                        "name": "sub sub node 1b"
+                    },
+                    {
+                        "group":"s",
+                        "name": "sub sub node 2b"
+                    }
+                ]
             },
             {
                 "group":"s",
@@ -41,24 +51,8 @@ function generateNodes()
                 "name":"sub node 7"
             },
             {
-                "group":"s",
-                "name":"sub node 8"
-            },
-            {
-                "group":"s",
-                "name":"sub node 9"
-            },
-            {
-                "group":"s",
-                "name":"sub node 10"
-            },
-            {
-                "group":"s",
-                "name":"sub node 11"
-            },
-            {
                 "group":"r",
-                "name":"sub node 12",
+                "name":"sub node 8",
                 "children":[
                     {
                         "group":"r",
@@ -67,10 +61,6 @@ function generateNodes()
                     {
                         "group":"r",
                         "name":"sub sub node 2"
-                    },
-                    {
-                        "group":"r",
-                        "name":"sub sub node 3"
                     }
                 ]
             }
