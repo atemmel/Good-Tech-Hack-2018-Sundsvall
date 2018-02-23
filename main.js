@@ -136,11 +136,12 @@ function generateNodes()
       .on("tick", tick)
       .charge(-500)
       .linkDistance(function(link){
-        var dist = 50 - (link.source.depth * 20);
+        var dist = 150 - (25)*(link.source.depth) - (25)*(link.target.depth);
+        console.log(dist);
         return dist;
       })
-      .friction(0.8)
-      .gravity(-0.01)
+      .friction(.8)
+      .gravity(0.05)
       .size([w, h - 160]);
 
   update(force, nodes, links);
