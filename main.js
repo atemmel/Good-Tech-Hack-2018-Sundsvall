@@ -78,8 +78,8 @@ function generateNodes()
   	.on("tick", tick)
   	.charge(-500)
   	.linkDistance(100)
-    .friction(0)
-    .gravity(0)
+    .friction(0.8)
+    .gravity(-0.01)
   	.size([w, h - 160]);
 
   var svg = d3.select("#main").append("svg")
