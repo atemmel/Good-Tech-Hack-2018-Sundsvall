@@ -4,7 +4,7 @@ let color_node_text     = '#DDDDDD';
 
 let color_binding       = '#666666';
 
-var link, node, title;
+var link, node, title ;
 
 function generateNodes()
 {
@@ -12,55 +12,67 @@ function generateNodes()
   var words = [
     {
         "depth":"0",
+        "group":"Root",
         "name":"Root",
         "children":[
             {
                 "depth":"1",
+                "group":"A",
                 "name":"A"
             },
             {
                 "depth":"1",
+                "group":"B",
                 "name":"B",
                 "children":[
                     {
                         "depth":"2",
+                        "group":"B",
                         "name": "C"
                     },
                     {
                         "depth":"2",
+                        "group":"B",
                         "name": "D",
                         "children":[
                             {
                                 "depth":"3",
+                                "group":"B",
                                 "name": "E"
                             },
                             {
                                 "depth":"3",
+                                "group":"B",
                                 "name": "F"
                             }
                         ]
                     },
                     {
                         "depth":"2",
+                        "group":"B",
                         "name":"G"
                     }
                 ]
             },
             {
                 "depth":"1",
+                "group":"C",
                 "name":"H"
             },
             {
                 "depth":"1",
+                "group":"D",
                 "name":"I",
                 "children":[
                     {
                         "depth":"2",
+                        "group":"D",
                         "name":"J"
                     },
                     {
                         "depth":"2",
-                        "name":"K"
+                        "group":"D",
+                        "name":"J"
                     }
                 ]
             }
@@ -74,9 +86,14 @@ function generateNodes()
   	radius = 20,
   	root;
 
+  var zoom = d3.behavior.zoom()
+      .scaleExtent([1, 10])
+      .on("zoom", zoomed);
+
   var svg = d3.select("#main").append("svg")
-  	.attr("width", w)
-  	.attr("height", h);
+  	.attr("width", "100%")
+  	.attr("height", "100%")
+    .call(zoom);
 
   root = words[0]; //set root node
   root.fixed = true;
@@ -113,7 +130,10 @@ function generateNodes()
     .attr("cy", function(d) { return d.y; })
     .attr("r", getRadius)
     .style("fill", color)
+    .style("stroke", color_node_outline)
+    .style("stroke-width", "1")
     .on("click", click);
+
     //.call(clicked);
 
 
@@ -125,12 +145,11 @@ function generateNodes()
     title.enter()
         .append("text")
         .attr("class", "title")
+        .attr("font-size", 15 + "px")
+        .attr("text-anchor", "middle")
         .style("fill", color_node_text)
         .style("font-family", "Roboto, sans-serif")
         .text(function(d) { return d.name; });
-
-    // Exit any old titles.
-    title.exit().remove();
 
     var force = d3.layout.force()
       .on("tick", tick)
@@ -143,6 +162,13 @@ function generateNodes()
       .friction(.8)
       .gravity(-0.0001)
       .size([w, h]);
+
+
+  function zoomed() {
+    node.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    title.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    link.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+  }
 
   update(force, nodes, links);
 
@@ -178,22 +204,26 @@ function tick() {
 
 // Color leaf nodes orange, and packages white or blue.
 function color(d) {
-    switch(d.depth){
-
-    case '0':
-      return '#757575';
+    switch(d.group){ 
+            
+    case 'Root':
+      return '#cccccc';
       break;
 
-    case '1':
+    case 'A':
       return '#108bef';
       break;
 
-    case '2':
+    case 'B':
       return '#0fef13';
       break;
 
-    case '3':
+    case 'C':
       return '#ef380f';
+      break;
+            
+    case 'D':
+      return '#c935f2';
       break;
     }
 }
