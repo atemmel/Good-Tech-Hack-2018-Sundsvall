@@ -6,17 +6,8 @@
   position: absolute;
 }
 
-#nodeA {
-  margin-left: 200px;
-  margin-top: 50px;
-}
-
-#nodeB {
-  margin-left: 700px;
-  margin-top: 100px;
-}
-
-#binding1 {
-  margin-left: 200px;
-  margin-top: 50px;
+#main {
+  position: absolute;
+  padding: 0px;
+  margin: 0px;
 }
