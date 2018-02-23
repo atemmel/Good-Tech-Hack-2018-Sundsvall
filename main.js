@@ -123,7 +123,7 @@ function generateNodes()
   		.style("fill", color);
 
   	node.transition()
-  		.attr("r", radius);
+  		.attr("r", getRadius);
 
   	// Enter any new nodes.
   	node.enter().append("svg:circle")
@@ -167,7 +167,8 @@ function generateNodes()
 
   // Color leaf nodes orange, and packages white or blue.
   function color(d) {
-  	if(d._children){
+      return (node.group);
+  	/*if(d._children){
   		return "#95a5a6";
   	}else{
   		switch(d.group) {
@@ -186,7 +187,7 @@ function generateNodes()
   			default:
   				return "#9b59b6";
   		}
-  	}
+  	}*/
   }
 
   // Toggle children on click.
