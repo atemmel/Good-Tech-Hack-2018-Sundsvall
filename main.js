@@ -68,14 +68,14 @@ function generateNodes()
 
   var w = window.outerWidth,
   	h = window.outerHeight,
-  	radius = 10,
+  	radius = 20,
   	node,
   	link,
   	root;
 
   var force = d3.layout.force()
   	.on("tick", tick)
-  	.charge(function(d) { return -500; })
+  	.charge(-500)
   	.linkDistance(50)
   	.size([w, h - 160]);
 
@@ -129,7 +129,7 @@ function generateNodes()
   		.attr("class", "node")
   		.attr("cx", function(d) { return d.x; })
   		.attr("cy", function(d) { return d.y; })
-  		.attr("r", radius)
+  		.attr("r", getRadius)
   		.style("fill", color)
   		.on("click", click)
   		.call(force.drag);
@@ -215,4 +215,10 @@ function generateNodes()
   	root.size = recurse(root);
   	return nodes;
   }
+}
+
+
+function getRadius(node)
+{
+  return (node.group.charCodeAt(0) - 100) * 1.5;
 }
