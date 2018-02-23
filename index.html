@@ -3,16 +3,12 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script src="main.js"></script>
   </head>
-  <body>
+  <body onload="generateNodes()">
 
-    <svg id="main" height="2000" width="2000">
-
-      <polyline class="binding" points="200,50 700,100" style="fill:none; stroke:black; stroke-width:4"/>
-
-      <circle class="node" id="nodeA" cx="200" cy="50" r="40" stroke="gray" stroke-width="4" fill="white"/>
-
-      <circle class="node" id="nodeB" cx="700" cy="100" r="20" stroke="gray" stroke-width="4" fill="white" />
+    <svg id="main" height="100%" width="100%" >
 
     </svg>
 
