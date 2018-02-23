@@ -75,8 +75,10 @@ function generateNodes()
 
   var force = d3.layout.force()
   	.on("tick", tick)
-  	.charge(-500)
-  	.linkDistance(50)
+  	.charge(return -500)
+  	.linkDistance(60)
+    .friction(0.8)
+    .gravity(-0.01)
   	.size([w, h - 160]);
 
   var svg = d3.select("#main").append("svg")
@@ -110,8 +112,7 @@ function generateNodes()
   		.attr("y1", function(d) { return d.source.y; })
   		.attr("x2", function(d) { return d.target.x; })
   		.attr("y2", function(d) { return d.target.y; })
-      .style("stroke", color_binding)
-      .style("stroke-width", "3");
+      .style("stroke", color_binding);
 
   	// Exit any old links.
   	link.exit().remove();
