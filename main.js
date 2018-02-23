@@ -138,7 +138,7 @@ function generateNodes()
   		.attr("r", getRadius)
   		.style("fill", color)
   		.on("click", click);
-  		//.call(force.drag);
+  		//.call(clicked);
   	// Exit any old nodes.
   	node.exit().remove();
 
@@ -194,7 +194,7 @@ function generateNodes()
 
   // Toggle children on click.
   function click(d) {
-    if(d.depth == 0) return;
+    alert(d.name);
   	//update();
   }
 
