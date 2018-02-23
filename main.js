@@ -109,7 +109,8 @@ function generateNodes()
   		.attr("x1", function(d) { return d.source.x; })
   		.attr("y1", function(d) { return d.source.y; })
   		.attr("x2", function(d) { return d.target.x; })
-  		.attr("y2", function(d) { return d.target.y; });
+  		.attr("y2", function(d) { return d.target.y; })
+      .style("fill", color_binding);
 
   	// Exit any old links.
   	link.exit().remove();
@@ -143,6 +144,8 @@ function generateNodes()
       title.enter()
           .append("text")
           .attr("class", "title")
+          .style("fill", color_node_text)
+          .style("font-family", "Roboto, sans-serif")
         	.text(function(d) { return d.name; });
 
       // Exit any old titles.
