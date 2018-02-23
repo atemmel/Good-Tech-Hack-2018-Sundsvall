@@ -6,7 +6,7 @@ let color_binding       = '#666666';
 
 function generateNodes()
 {
-  var main = document.getElementById('main');
+  var main = document.getElementById('map');
 
   var out = '<polyline class="binding" points="200,50 700,100" style="fill:none; stroke:' + color_binding + '; stroke-width:4"/>';
 
