@@ -195,7 +195,7 @@ function tick() {
   node.attr("cx", function(d) { return d.x; })
       .attr("cy", function(d) { return d.y; });
 
-  title.attr("x", function(d){ return (d.x + 20);});
+  title.attr("x", function(d){ return d.x;});
   title.attr("y", function(d) {return d.y; });
 }
 
