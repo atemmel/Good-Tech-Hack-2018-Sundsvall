@@ -172,8 +172,24 @@ function generateNodes()
 
   // Color leaf nodes orange, and packages white or blue.
   function color(d) {
-      return 'rgb('+(d.group*30)+','+ (d.group*80)+','+ (d.group*80)+')';
-  }
+      switch(d.group){
+              
+      case '0':
+        return '#757575';
+        break;
+      
+      case '1':
+        return '#108bef';
+        break;
+      
+      case '2':
+        return '#0fef13';
+        break;
+      
+      case '3':
+        return '#ef380f';
+        break;
+      }
 
   // Toggle children on click.
   function click(d) {
