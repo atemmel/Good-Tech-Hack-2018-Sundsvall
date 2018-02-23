@@ -141,8 +141,8 @@ function generateNodes()
         return dist;
       })
       .friction(.8)
-      .gravity(0.05)
-      .size([w, h - 160]);
+      .gravity(-0.0001)
+      .size([w, h]);
 
   update(force, nodes, links);
 
