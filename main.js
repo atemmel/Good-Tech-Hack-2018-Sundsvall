@@ -17,42 +17,40 @@ function generateNodes()
                 "name":"sub node 1"
             },
             {
-                "group":"n",
-                "name":"sub node 2"
-            },
-            {
-                "group":"n",
-                "name":"sub node 3"
-            },
-            {
-                "group":"v",
-                "name":"sub node 4"
-            },
-            {
                 "group":"s",
-                "name":"sub node 5",
+                "name":"sub node 2",
                 "children":[
                     {
                         "group":"s",
-                        "name": "sub sub node 1b"
+                        "name": "sub sub node 2b"
                     },
                     {
                         "group":"s",
-                        "name": "sub sub node 2b"
+                        "name": "sub sub node 2b",
+                        "children":[
+                            {
+                                "group":"s",
+                                "name": "sub sub sub node 1"
+                            },
+                            {
+                                "group":"s",
+                                "name": "sub sub sub node 2"
+                            }
+                        ]
+                    },
+                    {
+                        "group":"s",
+                        "name":"sub sub node2c"
                     }
                 ]
             },
             {
                 "group":"s",
-                "name":"sub node 6"
-            },
-            {
-                "group":"s",
-                "name":"sub node 7"
+                "name":"sub node 3"
             },
             {
                 "group":"r",
-                "name":"sub node 8",
+                "name":"sub node 4",
                 "children":[
                     {
                         "group":"r",
@@ -78,7 +76,7 @@ function generateNodes()
   var force = d3.layout.force()
   	.on("tick", tick)
   	.charge(function(d) { return -500; })
-  	.linkDistance(function(d) { return d.target._children ? 100 : 50; })
+  	.linkDistance(50)
   	.size([w, h - 160]);
 
   var svg = d3.select("#main").append("svg")
