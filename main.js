@@ -9,55 +9,55 @@ function generateNodes()
 
   var words = [
     {
-        "group":"n",
+        "group":"0",
         "word":"Root",
         "children":[
             {
-                "group":"n",
+                "group":"1",
                 "name":"A"
             },
             {
-                "group":"s",
+                "group":"1",
                 "name":"B",
                 "children":[
                     {
-                        "group":"s",
+                        "group":"2",
                         "name": "C"
                     },
                     {
-                        "group":"s",
+                        "group":"2",
                         "name": "D",
                         "children":[
                             {
-                                "group":"s",
+                                "group":"3",
                                 "name": "E"
                             },
                             {
-                                "group":"s",
+                                "group":"3",
                                 "name": "F"
                             }
                         ]
                     },
                     {
-                        "group":"s",
+                        "group":"2",
                         "name":"G"
                     }
                 ]
             },
             {
-                "group":"s",
+                "group":"1",
                 "name":"H"
             },
             {
-                "group":"r",
+                "group":"1",
                 "name":"I",
                 "children":[
                     {
-                        "group":"r",
+                        "group":"2",
                         "name":"J"
                     },
                     {
-                        "group":"r",
+                        "group":"2",
                         "name":"K"
                     }
                 ]
@@ -75,7 +75,7 @@ function generateNodes()
 
   var force = d3.layout.force()
   	.on("tick", tick)
-  	.charge( -500)
+  	.charge(-500)
   	.linkDistance(60)
     .friction(0.8)
     .gravity(-0.01)
@@ -123,7 +123,7 @@ function generateNodes()
   		.style("fill", color);
 
   	node.transition()
-  		.attr("r", radius);
+  		.attr("r", getRadius);
 
   	// Enter any new nodes.
   	node.enter().append("svg:circle")
@@ -168,7 +168,7 @@ function generateNodes()
 
   // Color leaf nodes orange, and packages white or blue.
   function color(d) {
-      return (node.group.charCodeAt(0));
+      return (node.group);
   	/*if(d._children){
   		return "#95a5a6";
   	}else{
@@ -222,5 +222,5 @@ function generateNodes()
 
 function getRadius(node)
 {
-  return (node.group.charCodeAt(0) - 100) * 1.5;
+  return 40 - (node.group.valueOf() * 10);
 }
