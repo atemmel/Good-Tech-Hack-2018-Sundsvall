@@ -10,55 +10,55 @@ function generateNodes()
   var words = [
     {
         "group":"n",
-        "word":"main node",
+        "word":"Root",
         "children":[
             {
                 "group":"n",
-                "name":"sub node 1"
+                "name":"A"
             },
             {
                 "group":"s",
-                "name":"sub node 2",
+                "name":"B",
                 "children":[
                     {
                         "group":"s",
-                        "name": "sub sub node 2b"
+                        "name": "C"
                     },
                     {
                         "group":"s",
-                        "name": "sub sub node 2b",
+                        "name": "D",
                         "children":[
                             {
                                 "group":"s",
-                                "name": "sub sub sub node 1"
+                                "name": "E"
                             },
                             {
                                 "group":"s",
-                                "name": "sub sub sub node 2"
+                                "name": "F"
                             }
                         ]
                     },
                     {
                         "group":"s",
-                        "name":"sub sub node2c"
+                        "name":"G"
                     }
                 ]
             },
             {
                 "group":"s",
-                "name":"sub node 3"
+                "name":"H"
             },
             {
                 "group":"r",
-                "name":"sub node 4",
+                "name":"I",
                 "children":[
                     {
                         "group":"r",
-                        "name":"sub sub node 1"
+                        "name":"J"
                     },
                     {
                         "group":"r",
-                        "name":"sub sub node 2"
+                        "name":"K"
                     }
                 ]
             }
@@ -67,7 +67,7 @@ function generateNodes()
   ]
 
   var w = window.outerWidth,
-  	h =window.outerHeight,
+  	h = window.outerHeight,
   	radius = 10,
   	node,
   	link,
@@ -110,7 +110,7 @@ function generateNodes()
   		.attr("y1", function(d) { return d.source.y; })
   		.attr("x2", function(d) { return d.target.x; })
   		.attr("y2", function(d) { return d.target.y; })
-      .style("fill", color_binding);
+      .style("stroke", color_binding);
 
   	// Exit any old links.
   	link.exit().remove();
@@ -161,7 +161,7 @@ function generateNodes()
   	node.attr("cx", function(d) { return d.x; })
   		  .attr("cy", function(d) { return d.y; });
 
-      title.attr("transform", function(d){ return "translate("+d.x+","+d.y+")"; });
+      title.attr("transform", function(d){ return "translate("+(d.x + 20)+","+(d.y)+")"; });
   }
 
   // Color leaf nodes orange, and packages white or blue.
