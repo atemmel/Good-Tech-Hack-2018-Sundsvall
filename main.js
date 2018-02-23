@@ -167,7 +167,7 @@ function generateNodes()
 
   // Color leaf nodes orange, and packages white or blue.
   function color(d) {
-      return (node.group);
+      return 'rgb('+(d.group*30)+','+ (d.group*80)+','+ (d.group*80)+')';
   	/*if(d._children){
   		return "#95a5a6";
   	}else{
