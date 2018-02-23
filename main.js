@@ -168,38 +168,20 @@ function generateNodes()
 
   // Color leaf nodes orange, and packages white or blue.
   function color(d) {
-      return (node.group);
-  	/*if(d._children){
-  		return "#95a5a6";
-  	}else{
-  		switch(d.group) {
-  			case 'r': //adverb
-  				return "#e74c3c";
-  				break;
-  			case 'n': //noun
-  				return "#3498db";
-  				break;
-  			case 'v': //verb
-  				return "#2ecc71";
-  				break;
-  			case 's': //adjective
-  				return "#e78229";
-  				break;
-  			default:
-  				return "#9b59b6";
-  		}
-  	}*/
+
+      return '#' + ((d.group) * 20).toString(16) + ((d.group) * 30).toString(16) + ((d.group) * 40).toString(16);
   }
 
   // Toggle children on click.
   function click(d) {
-  	if (d.children) {
+  	/*if (d.children) {
   		d._children = d.children;
   		d.children = null;
   	} else {
   		d.children = d._children;
   		d._children = null;
-  	}
+  	}*/
+    if(d.group == 0) return;
   	update();
   }
 
