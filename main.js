@@ -9,55 +9,55 @@ function generateNodes()
 
   var words = [
     {
-        "group":"0",
+        "depth":"0",
         "word":"Root",
         "children":[
             {
-                "group":"1",
+                "depth":"1",
                 "name":"A"
             },
             {
-                "group":"1",
+                "depth":"1",
                 "name":"B",
                 "children":[
                     {
-                        "group":"2",
+                        "depth":"2",
                         "name": "C"
                     },
                     {
-                        "group":"2",
+                        "depth":"2",
                         "name": "D",
                         "children":[
                             {
-                                "group":"3",
+                                "depth":"3",
                                 "name": "E"
                             },
                             {
-                                "group":"3",
+                                "depth":"3",
                                 "name": "F"
                             }
                         ]
                     },
                     {
-                        "group":"2",
+                        "depth":"2",
                         "name":"G"
                     }
                 ]
             },
             {
-                "group":"1",
+                "depth":"1",
                 "name":"H"
             },
             {
-                "group":"1",
+                "depth":"1",
                 "name":"I",
                 "children":[
                     {
-                        "group":"2",
+                        "depth":"2",
                         "name":"J"
                     },
                     {
-                        "group":"2",
+                        "depth":"2",
                         "name":"K"
                     }
                 ]
@@ -172,20 +172,20 @@ function generateNodes()
 
   // Color leaf nodes orange, and packages white or blue.
   function color(d) {
-      switch(d.group){
-              
+      switch(d.depth){
+
       case '0':
         return '#757575';
         break;
-      
+
       case '1':
         return '#108bef';
         break;
-      
+
       case '2':
         return '#0fef13';
         break;
-      
+
       case '3':
         return '#ef380f';
         break;
@@ -194,7 +194,7 @@ function generateNodes()
 
   // Toggle children on click.
   function click(d) {
-    if(d.group == 0) return;
+    if(d.depth == 0) return;
   	//update();
   }
 
@@ -216,6 +216,6 @@ function generateNodes()
 
 function getRadius(node)
 {
-  //if(node.group == 0) return 40;
-  return 40 - (node.group.valueOf() * 10);
+  //if(node.depth == 0) return 40;
+  return 40 - (node.depth.valueOf() * 10);
 }
