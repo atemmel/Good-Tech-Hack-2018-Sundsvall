@@ -75,7 +75,7 @@ function generateNodes()
 
   var force = d3.layout.force()
   	.on("tick", tick)
-  	.charge(return -500)
+  	.charge( -500)
   	.linkDistance(60)
     .friction(0.8)
     .gravity(-0.01)
@@ -168,7 +168,8 @@ function generateNodes()
 
   // Color leaf nodes orange, and packages white or blue.
   function color(d) {
-  	if(d._children){
+      return (node.group.charCodeAt(0));
+  	/*if(d._children){
   		return "#95a5a6";
   	}else{
   		switch(d.group) {
@@ -187,7 +188,7 @@ function generateNodes()
   			default:
   				return "#9b59b6";
   		}
-  	}
+  	}*/
   }
 
   // Toggle children on click.
