@@ -13,7 +13,7 @@ function generateNodes()
 
 function createNode(x, y, radius, string)
 {
-  return '<circle class="node" cx="' + x +'" cy="'+ y + '" r="' + radius + '" stroke="gray" stroke-width="4" fill="white"/>' +
+  return '<circle class="node" cx="' + x +'" cy="'+ y + '" r="' + radius + '" stroke="gray" stroke-width="' + radius/10 + '" fill="white"/>' +
   '<text x="' + x + '" y="' + y + '" text-anchor="middle" fill="blue" dy="0.314em" font-size="' + radius/2 +'">' + string + '</text>';
 }
 
