@@ -83,11 +83,10 @@ function generateNodes()
 
   var w = window.outerWidth,
   	h = window.outerHeight,
-  	radius = 20,
   	root;
 
   var zoom = d3.behavior.zoom()
-      .scaleExtent([1, 10])
+      .scaleExtent([0.5, 10])
       .on("zoom", zoomed);
 
   var svg = d3.select("#main").append("svg")
@@ -136,8 +135,6 @@ function generateNodes()
 
     //.call(clicked);
 
-
-
     title = svg.selectAll("text.title")
          .data(nodes);
 
@@ -147,6 +144,7 @@ function generateNodes()
         .attr("class", "title")
         .attr("font-size", 15 + "px")
         .attr("text-anchor", "middle")
+        .attr("dy", ".35em")
         .style("fill", color_node_text)
         .style("font-family", "Roboto, sans-serif")
         .text(function(d) { return d.name; });
@@ -156,7 +154,6 @@ function generateNodes()
       .charge(-500)
       .linkDistance(function(link){
         var dist = 150 - (25)*(link.source.depth) - (25)*(link.target.depth);
-        console.log(dist);
         return dist;
       })
       .friction(.8)
@@ -171,7 +168,6 @@ function generateNodes()
   }
 
   update(force, nodes, links);
-
 
 }
 
@@ -199,13 +195,14 @@ function tick() {
   node.attr("cx", function(d) { return d.x; })
       .attr("cy", function(d) { return d.y; });
 
-  title.attr("transform", function(d){ return "translate("+(d.x + 20)+","+(d.y)+")"; });
+  title.attr("x", function(d){ return (d.x + 20);});
+  title.attr("y", function(d) {return d.y; });
 }
 
 // Color leaf nodes orange, and packages white or blue.
 function color(d) {
-    switch(d.group){ 
-            
+    switch(d.group){
+
     case 'Root':
       return '#cccccc';
       break;
@@ -221,7 +218,7 @@ function color(d) {
     case 'C':
       return '#ef380f';
       break;
-            
+
     case 'D':
       return '#c935f2';
       break;
