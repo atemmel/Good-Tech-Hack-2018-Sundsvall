@@ -66,6 +66,7 @@ function generateNodes()
     }
   ]
 
+
   var w = window.outerWidth,
   	h = window.outerHeight,
   	radius = 20,
@@ -117,6 +118,10 @@ function generateNodes()
   	// Exit any old links.
   	link.exit().remove();
 
+    function zoomed() {
+      svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    }
+
   	// Update the nodes…
   	node = svg.selectAll("circle.node")
   		.data(nodes)
@@ -132,8 +137,8 @@ function generateNodes()
   		.attr("cy", function(d) { return d.y; })
   		.attr("r", getRadius)
   		.style("fill", color)
-  		.on("click", click)
-  		.call(force.drag);
+  		.on("click", click);
+  		//.call(force.drag);
   	// Exit any old nodes.
   	node.exit().remove();
 
@@ -172,15 +177,8 @@ function generateNodes()
 
   // Toggle children on click.
   function click(d) {
-  	/*if (d.children) {
-  		d._children = d.children;
-  		d.children = null;
-  	} else {
-  		d.children = d._children;
-  		d._children = null;
-  	}*/
     if(d.group == 0) return;
-  	update();
+  	//update();
   }
 
   // Returns a list of all nodes under the root.
@@ -199,8 +197,8 @@ function generateNodes()
   }
 }
 
-
 function getRadius(node)
 {
+  //if(node.group == 0) return 40;
   return 40 - (node.group.valueOf() * 10);
 }
