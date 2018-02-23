@@ -190,6 +190,7 @@ function generateNodes()
         return '#ef380f';
         break;
       }
+  }
 
   // Toggle children on click.
   function click(d) {
