@@ -68,7 +68,7 @@ function generateNodes()
 
   var w = window.outerWidth,
   	h = window.outerHeight,
-  	radius = 10,
+  	radius = 40,
   	node,
   	link,
   	root;
@@ -132,7 +132,6 @@ function generateNodes()
   		.style("fill", color)
   		.on("click", click)
   		.call(force.drag);
-
   	// Exit any old nodes.
   	node.exit().remove();
 
