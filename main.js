@@ -296,15 +296,18 @@ function centerNode(where){
 
   following = where;
 
-  scale = (where.depth * 3) + 1;
+  scale = (where.depth * 1.75) + 1;
+
+  x = (halfw  - where.x* scale) ;
+  y = (halfh - where.y* scale);
 
   node.transition()
   .duration(500)
-  .attr("transform", "translate(" + ((halfw  - where.x* scale) ) + "," + ((halfh - where.y* scale)) + ")scale(" + scale + ")");
+  .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
   title.transition()
   .duration(500)
-  .attr("transform", "translate(" + ((halfw - where.x* scale) ) + "," + ((halfh - where.y* scale)) + ")scale(" + scale + ")");
+  .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
   link.transition()
   .duration(500)
-  .attr("transform", "translate(" + ((halfw  - where.x* scale) ) + "," + ((halfh - where.y* scale)) + ")scale(" + scale + ")");
+  .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
 }
