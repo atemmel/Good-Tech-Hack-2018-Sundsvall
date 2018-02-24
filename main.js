@@ -107,13 +107,6 @@ function generateNodes()
     .data(links);
 
   // Enter any new links.
-  link.enter().insert("svg:line", ".node")
-    .attr("class", "link")
-    .attr("x1", function(d) { return d.source.x; })
-    .attr("y1", function(d) { return d.source.y; })
-    .attr("x2", function(d) { return d.target.x; })
-    .attr("y2", function(d) { return d.target.y; })
-    .style("stroke", color_binding);
 
   node = svg.selectAll("circle.node")
     .data(nodes)
@@ -130,9 +123,17 @@ function generateNodes()
     .attr("r", getRadius)
     .style("fill", color)
     .style("stroke", color_node_outline)
-    .style("stroke-width", "1")
+    .style("stroke-width", getOutline)
     .on("click", click);
 
+    link.enter().insert("svg:line", ".node")
+        .attr("class", "link")
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; })
+        .style("stroke", color_binding)
+        .style("stroke-width", getLine);
     //.call(clicked);
 
     title = svg.selectAll("text.title")
@@ -156,12 +157,12 @@ function generateNodes()
       .on("tick", tick)
       .charge(-500)
       .linkDistance(function(link){
-        var dist = 150 - (25)*(link.source.depth) - (25)*(link.target.depth);
+        var dist = 200 - (40)*(link.source.depth) - (40)*(link.target.depth);
         return dist;
       })
       .friction(.8)
-      .gravity(0.05)
-      .size([w, h - 160]);
+      .gravity(-0.01)
+      .size([w, h]);
 
 
   function zoomed() {
@@ -176,7 +177,20 @@ function generateNodes()
 
 function getRadius(node)
 {
-  return 40 - (node.depth.valueOf() * 10);
+  return 100 * (2/5)**(node.depth.valueOf());
+}
+
+function getOutline(node)
+{
+  var kioskmongo = getRadius(node);
+  kioskmongo /= 20;
+  return kioskmongo;
+}
+
+function getLine(link)
+{
+  var width = getOutline(link.target);
+  return width;
 }
 
 function update(force, nodes, links, link) {
