@@ -23,7 +23,7 @@ function generateNodes()
             {
                 "depth":"1",
                 "group":"B",
-                "name":"B",
+                "name":"BÖG",
                 "children":[
                     {
                         "depth":"2",
@@ -143,28 +143,30 @@ function generateNodes()
     title.enter()
         .append("text")
         .attr("class", "title")
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; })
-
-        .attr("font-size", getFontsize + "px")
         .attr("text-anchor", "middle")
         .attr("dy", ".35em")
         .style("fill", color_node_text)
         .style("font-family", "Roboto, sans-serif")
         .style("paint-order", "stroke")
         .style("stroke", "#333333")
-        .style("stroke-width", "2px")
-        .text(function(d) { return d.name; });
+        .text(function(d) { return d.name; })
+        .on("click", click)
+        .style("stroke-width", function(d) {
+          var radius = getRadius(d);
+          return (Math.min(2 * radius, (2 * radius - 8) / this.getComputedTextLength() * 12))/20 + "px"; })
+        .style("font-size", function(d) {
+          var radius = getRadius(d);
+          return Math.min(2 * radius, (2 * radius - 8) / this.getComputedTextLength() * 12) + "px"; });
 
     var force = d3.layout.force()
       .on("tick", tick)
       .charge(-500)
       .linkDistance(function(link){
-        var dist = 200 - (40)*(link.source.depth) - (40)*(link.target.depth);
+        var dist = 200 - (50)*(link.target.depth);
         return dist;
       })
       .friction(.8)
-      .gravity(-0.01)
+      .gravity(-0.001)
       .size([w, h]);
 
 
@@ -194,14 +196,6 @@ function getLine(link)
 {
   var width = getOutline(link.target);
   return width;
-}
-
-function getFontsize(title)
-{
-  var fSize = getRadius(title);
-  fSize *= 3/10;
-  console.log(fSize);
-  return fSize;
 }
 
 function update(force, nodes, links, link) {
