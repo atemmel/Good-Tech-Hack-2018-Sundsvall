@@ -12,66 +12,66 @@ function generateNodes()
     {
         "depth":"0",
         "group":"Root",
-        "name":"Root",
+        "name":"Bil Model Deluxe",
         "children":[
             {
                 "depth":"1",
                 "group":"A",
-                "name":"A"
+                "name":"[Koncept]\nKrockkudde"
             },
             {
                 "depth":"1",
                 "group":"B",
-                "name":"BÖG",
+                "name":"[Koncept]\nMotor",
                 "children":[
                     {
                         "depth":"2",
                         "group":"B",
-                        "name": "C"
+                        "name": "[Prototyp]\nDiesel"
                     },
                     {
                         "depth":"2",
                         "group":"B",
-                        "name": "D",
+                        "name": "[Prototyp]\nEl",
                         "children":[
                             {
                                 "depth":"3",
                                 "group":"B",
-                                "name": "E"
+                                "name": "[Produkt]\nVersion 1"
                             },
                             {
                                 "depth":"3",
                                 "group":"B",
-                                "name": "F"
+                                "name": "[Produkt]\nVersion 2"
                             }
                         ]
                     },
                     {
                         "depth":"2",
                         "group":"B",
-                        "name":"G"
+                        "name":"[Prototyp]\nBensin"
                     }
                 ]
             },
             {
                 "depth":"1",
                 "group":"C",
-                "name":"H"
+                "name":"[Koncept]\nAircondition"
             },
             {
                 "depth":"1",
                 "group":"D",
-                "name":"I",
+                "name":"[Koncept]\nChassi",
                 "children":[
                     {
                         "depth":"2",
                         "group":"D",
-                        "name":"J"
+                        "name":"[Protoyp]\nTitan-legering"
                     },
                     {
                         "depth":"2",
                         "group":"D",
-                        "name":"K"
+                        "name":"[Prototyp]\nStål"
                     }
                 ]
             }
