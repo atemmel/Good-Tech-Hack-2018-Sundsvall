@@ -48,7 +48,7 @@ svg {
   border-radius: 10px;
   border: 2px solid #ecf0f1;
   position: absolute;
-  text-align:justify;
+  text-align:left;
   padding: 10px;
   margin-left: auto;
   background-color: rgba(0,0,0,0.8);
@@ -58,6 +58,7 @@ svg {
   right: 5%;
   max-width: 20%;
   min-width: 344px;
+  height: auto;
 }
 
 #takeMeToChurch, #weBuiltThisCity{
