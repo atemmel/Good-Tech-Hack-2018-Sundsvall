@@ -27,37 +27,37 @@ function generateNodes()
             {
                 "depth":"1",
                 "group":"A",
-				"description": "En krockkudde för öka säkerheten i bilen",
+				"description": "En krockkudde för ökad säkerhet i bilen",
                 "name":"[Koncept]\nKrockkudde"
             },
             {
                 "depth":"1",
                 "group":"B",
-				"description": "Bilen bör ha en bra motor med lång livslängd men den skall även vara effektiva för minska utsläppen.",
+				"description": "Bilen behöver en motor, vi har kommit fram till att testa tre alternativ: Diesel-, bensin- och elmotorer.",
                 "name":"[Koncept]\nMotor",
                 "children":[
                     {
                         "depth":"2",
                         "group":"B",
-						"description":"Diesel har i regel lägre utsläpp än bensindrivna motorer när det kommer till längre sträckor",
+						"description":"En prototyp för en dieselmotor byggdes och testades. Däremot så visade det sig att teamet som utvecklade elmotorn fick bättre resultat och vidare utveckling till produktion av diesel alternativet lades ned.",
                         "name": "[Prototyp]\nDiesel"
                     },
                     {
                         "depth":"2",
                         "group":"B",
-						"description":"De senste och mordernaste är elbilarna, inga utsläpp alls och bra med vridmoment",
+						"description":"Vi lyckades göra ett flertal prototyper med olika strukturer, två av dessa prototyper visade sig vara mycket lovande för olika endamål. Vi har bestämt att dela vårat team i två och utveckla produkter utifrån dessa två prototyper.",
                         "name": "[Prototyp]\nEl",
                         "children":[
                             {
                                 "depth":"3",
                                 "group":"B",
-								"description":"En utav två modeller som togs fram ur grenen el-motorer",
+								"description":"Motorn med högre top-rotation och vridmoment som fart-entusiaster kommer uppskatta.",
 								"name": "[Produkt]\nVersion 1"
                             },
                             {
                                 "depth":"3",
                                 "group":"B",
-								"description":"En utav två modeller som togs fram ur grenen el-motorer",
+								"description":"Den mer energisnåla men långsammare motorn som passar bättre för vardagsbruk eller längre färder så som i t.ex lastbilar.",
                                 "name": "[Produkt]\nVersion 2"
                             }
                         ]
@@ -65,7 +65,7 @@ function generateNodes()
                     {
                         "depth":"2",
                         "group":"B",
-						"description": "Bensindrivna motorer är billigare och har haft en bra utvecklingkurva senaste tiden. lagom snål och lagom billig",
+						"description": "Vi byggde aldrig klart prototypen till bensinmotorn då vi insåg att datorsimuleringarna och uträkningarna vid utveklingen av motorn pekade på för höga utsläpp.",
                         "name":"[Prototyp]\nBensin"
                     }
                 ]
@@ -73,26 +73,26 @@ function generateNodes()
             {
                 "depth":"1",
                 "group":"C",
-				"description":"Airkondition ökar komforten i bilen",
+				"description":"Airkondition är nödvändigt för komfort, vi funderar på fläktbladsdesign för maximal prestanda och även luftfilter mot föroreningar som kan förekomma i storstäder.",
                 "name":"[Koncept]\nAircondition"
             },
             {
                 "depth":"1",
                 "group":"D",
-				"description":"",
+				"description":"Chassit måste vara stryktåligt",
                 "name":"[Koncept]\nChassi",
                 "children":[
                     {
                         "depth":"2",
                         "group":"D",
-						"description":"",
+						"description":"Flygplans-gradig titan-legering, starkt och lätt, kan minska på utsläpp, däremot dyrt. Mer information om utsläpp vid tillverkning och pris behövs.",
                         "name":"[Protoyp]\nTitan-legering"
                     },
                     {
                         "depth":"2",
                         "group":"D",
-						"description":"",
-                        "name":"[Prototyp]\nStål"
+						"description":"Experimentellt kompositmaterial. Mer forskning måste göras i hur vi ska forma och producera delar på ett kostnadseffektivt sett.",
+                        "name":"[Prototyp]\nKomposit"
                     }
                 ]
             }
