@@ -328,11 +328,11 @@ function centerNode(where){
 function show(d)
 {
   var box = document.getElementById('messagebox');
-  
+
   if(d == root) {
 
     return;
   }
 
-  box.innerHTML = d.desc;
+  box.innerHTML = '<div>' + d.description + '</div><div id="takeMeToChurch">Till trådar</div><div id="weBuiltThisCity">Bygg vidare</div>';
 }
