@@ -330,8 +330,11 @@ function show(d)
   var box = document.getElementById('messagebox');
 
   if(d == root) {
-
+    box.style.opacity = 0;
     return;
+  }
+  else {
+    box.style.opacity = 1;
   }
 
   box.innerHTML = '<div>' + d.description + '</div><div id="takeMeToChurch">Till trådar</div><div id="weBuiltThisCity">Bygg vidare</div>';
