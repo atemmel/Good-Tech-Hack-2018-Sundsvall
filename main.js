@@ -5,6 +5,15 @@ let color_binding       = '#7f8c8d';
 
 var link, node, title, w = window.outerWidth, h = window.outerHeight ;
 let rad = 50;
+
+var halfw = w/2;
+var halfh = h/2;
+
+var scale = 1;
+
+var following = null;
+var root;
+
 function generateNodes()
 {
 
@@ -79,23 +88,19 @@ function generateNodes()
     }
   ]
 
-
-  var
-  	root;
-
-  var zoom = d3.behavior.zoom()
+  /*var zoom = d3.behavior.zoom()
       .scaleExtent([0.5, 10])
-      .on("zoom", zoomed);
+      .on("zoom", zoomed);*/
 
   var svg = d3.select("#main").append("svg")
   	.attr("width", "100%")
   	.attr("height", "100%")
-    .call(zoom);
+    ;//.call(zoom);
 
   root = words[0]; //set root node
   root.fixed = true;
   root.x = w / 2;
-  root.y = h / 2 - 80;
+  root.y = h / 2;
 
   var nodes = flatten(root),
   links = d3.layout.tree().links(nodes);
@@ -161,7 +166,6 @@ function generateNodes()
       .charge(-700)
       .linkDistance(function(link){
         var dist = getLine(link);
-        console.log(dist);
         return (150*dist-120);
       })
       .friction(.8)
@@ -170,10 +174,16 @@ function generateNodes()
 
 
   function zoomed() {
-    node.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-    title.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-    link.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    scale = d3.event.scale;
+    node.transition()
+    .duration(500).attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    title.transition()
+    .duration(500).attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    link.transition()
+    .duration(500).attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
   }
+
+  centerNode(root);
 
   update(force, nodes, links);
 
@@ -255,7 +265,9 @@ function color(d) {
 
 // Toggle children on click.
 function click(d) {
-  alert(d.name);
+
+  centerNode(d);
+  //alert(d.name);
   //update();
 }
 
@@ -274,9 +286,25 @@ function flatten(root) {
   return nodes;
 }
 
-function transform() {
-  return d3.zoomIdentity
-      .translate(width / 2, height / 2)
-      .scale(8)
-      .translate(-point[0], -point[1]);
+function centerNode(where){
+
+  if(following == where)
+  {
+    where = root;
+
+  }
+
+  following = where;
+
+  scale = (where.depth * 3) + 1;
+
+  node.transition()
+  .duration(500)
+  .attr("transform", "translate(" + ((halfw  - where.x* scale) ) + "," + ((halfh - where.y* scale)) + ")scale(" + scale + ")");
+  title.transition()
+  .duration(500)
+  .attr("transform", "translate(" + ((halfw - where.x* scale) ) + "," + ((halfh - where.y* scale)) + ")scale(" + scale + ")");
+  link.transition()
+  .duration(500)
+  .attr("transform", "translate(" + ((halfw  - where.x* scale) ) + "," + ((halfh - where.y* scale)) + ")scale(" + scale + ")");
 }
