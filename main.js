@@ -9,13 +9,34 @@ let rad = 50;
 var halfw = w/2;
 var halfh = h/2;
 
-var scale = 1;
+var scale = 1, starsmade = 0;
 
 var following = null;
 var root;
 
 function generateNodes()
 {
+  var bg = document.getElementById('bg');
+  var bgout;
+
+  var count = 0;
+  for(var i = 0; i < w; i += 200)
+  {
+    for(var j = 0; j < h; j += 200)
+    {
+      //console.log(i,j);
+      if(count % 2 == 0 ){
+          bgout += createStar(i,j, starsmade);
+          ++starsmade;
+      }
+      ++count;
+
+    }
+    //i += 100;
+  }
+
+
+  bg.innerHTML = bgout;
 
   var words = [
     {
@@ -107,6 +128,7 @@ function generateNodes()
   var svg = d3.select("#main").append("svg")
   	.attr("width", "100%")
   	.attr("height", "100%")
+    .attr("z-index", "1");
     ;//.call(zoom);
 
   root = words[0]; //set root node
@@ -255,7 +277,7 @@ function color(d) {
     switch(d.group){
 
     case 'Root':
-      return '#cccccc';
+      return '#f1c40f';
       break;
 
     case 'A':
@@ -314,6 +336,12 @@ function centerNode(where){
   x = (halfw  - where.x* scale) ;
   y = (halfh - where.y* scale);
 
+  for(var i = 0; i < starsmade; i++)
+  {
+    document.getElementById('star' + i).style.transform = "translate(" + x + "px," + y + "px)scale(" + scale + ")";
+    console.log(i,document.getElementById('star' + i).style.transform);
+  }
+
   node.transition()
   .duration(500)
   .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
@@ -323,6 +351,7 @@ function centerNode(where){
   link.transition()
   .duration(500)
   .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
+
 }
 
 function show(d)
@@ -338,4 +367,11 @@ function show(d)
   }
 
   box.innerHTML = '<div>' + d.description + '</div><div id="takeMeToChurch">Till trådar</div><div id="weBuiltThisCity">Bygg vidare</div>';
+}
+
+function createStar(x, y, index)
+{
+  return '<polygon points="' + (0 + x) +','+(50 + y) + ' ' + (30 + x) + ',' + (30 + y) + ' ' + (50 + x)+','+(0 + y)+ ' ' + (70 + x)+','+
+  (30 + y)+ ' ' + (100 + x)+','+(50 + y)+ ' ' + (70 + x)+','+(70 + y)+ ' ' + (50 + x)+','+(100 + y) + ' ' + (30 + x)+','
+  + (70 + y) + '" id="star' + index +'" style="fill:rgb(62,83,104); transition: 0.5s ease;" />';
 }
