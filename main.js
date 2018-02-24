@@ -83,11 +83,10 @@ function generateNodes()
 
   var w = window.outerWidth,
   	h = window.outerHeight,
-  	radius = 20,
   	root;
 
   var zoom = d3.behavior.zoom()
-      .scaleExtent([1, 10])
+      .scaleExtent([0.5, 10])
       .on("zoom", zoomed);
 
   var svg = d3.select("#main").append("svg")
@@ -127,17 +126,15 @@ function generateNodes()
     .style("stroke-width", getOutline)
     .on("click", click);
 
-    //.call(clicked);
-
     link.enter().insert("svg:line", ".node")
-      .attr("class", "link")
-      .attr("x1", function(d) { return d.source.x; })
-      .attr("y1", function(d) { return d.source.y; })
-      .attr("x2", function(d) { return d.target.x; })
-      .attr("y2", function(d) { return d.target.y; })
-      .style("stroke", color_binding)
-      .style("stroke-width", getLine);
-
+        .attr("class", "link")
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; })
+        .style("stroke", color_binding)
+        .style("stroke-width", getLine);
+    //.call(clicked);
 
     title = svg.selectAll("text.title")
          .data(nodes);
@@ -148,6 +145,7 @@ function generateNodes()
         .attr("class", "title")
         .attr("font-size", 15 + "px")
         .attr("text-anchor", "middle")
+        .attr("dy", ".35em")
         .style("fill", color_node_text)
         .style("font-family", "Roboto, sans-serif")
         .text(function(d) { return d.name; });
@@ -157,7 +155,6 @@ function generateNodes()
       .charge(-500)
       .linkDistance(function(link){
         var dist = 200 - (40)*(link.source.depth) - (40)*(link.target.depth);
-        console.log(dist);
         return dist;
       })
       .friction(.8)
@@ -173,7 +170,6 @@ function generateNodes()
 
   update(force, nodes, links);
 
-
 }
 
 function getRadius(node)
@@ -184,7 +180,7 @@ function getRadius(node)
 function getOutline(node)
 {
   var kioskmongo = getRadius(node);
-  kioskmongo /= 10;
+  kioskmongo /= 20;
   return kioskmongo;
 }
 
@@ -213,7 +209,8 @@ function tick() {
   node.attr("cx", function(d) { return d.x; })
       .attr("cy", function(d) { return d.y; });
 
-  title.attr("transform", function(d){ return "translate("+(d.x + 20)+","+(d.y)+")"; });
+  title.attr("x", function(d){ return d.x;});
+  title.attr("y", function(d) {return d.y; });
 }
 
 // Color leaf nodes orange, and packages white or blue.
