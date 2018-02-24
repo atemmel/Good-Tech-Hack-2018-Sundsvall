@@ -158,11 +158,11 @@ function generateNodes()
 
     var force = d3.layout.force()
       .on("tick", tick)
-      .charge(-500)
+      .charge(-700)
       .linkDistance(function(link){
         var dist = getLine(link);
         console.log(dist);
-        return (120*dist-30);
+        return (150*dist-120);
       })
       .friction(.8)
       .gravity(-0.01)
@@ -187,7 +187,7 @@ function getRadius(node)
   }
   else
   {
-    return rad * (1/2)**(node.depth.valueOf());
+    return rad * (3/4)**(node.depth.valueOf());
   }
 }
 
