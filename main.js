@@ -143,7 +143,6 @@ function generateNodes()
     title.enter()
         .append("text")
         .attr("class", "title")
-        .attr("font-size", 15 + "px")
         .attr("text-anchor", "middle")
         .attr("dy", ".35em")
         .style("fill", color_node_text)
@@ -151,7 +150,11 @@ function generateNodes()
         .style("paint-order", "stroke")
         .style("stroke", "#333333")
         .style("stroke-width", "2px")
-        .text(function(d) { return d.name; });
+        .text(function(d) { return d.name; })
+        .on("click", click)
+        .style("font-size", function(d) {
+          var radius = getRadius(d);
+          return Math.min(2 * radius, (2 * radius - 8) / this.getComputedTextLength() * 12) + "px"; });
 
     var force = d3.layout.force()
       .on("tick", tick)
