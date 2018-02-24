@@ -1,10 +1,9 @@
-let color_node_fill     = '#444444';
-let color_node_outline  = '#666666';
-let color_node_text     = '#DDDDDD';
+let color_node_outline  = '#7f8c8d';
+let color_node_text     = '#ecf0f1';
 
-let color_binding       = '#666666';
+let color_binding       = '#7f8c8d';
 
-var link, node, title ;
+var link, node, title, w = window.outerWidth, h = window.outerHeight ;
 let rad = 100;
 function generateNodes()
 {
@@ -81,8 +80,7 @@ function generateNodes()
   ]
 
 
-  var w = window.outerWidth,
-  	h = window.outerHeight,
+  var
   	root;
 
   var zoom = d3.behavior.zoom()
@@ -230,19 +228,19 @@ function color(d) {
       break;
 
     case 'A':
-      return '#108bef';
+      return '#3498db';
       break;
 
     case 'B':
-      return '#0fef13';
+      return '#2ecc71';
       break;
 
     case 'C':
-      return '#ef380f';
+      return '#e74c3c';
       break;
 
     case 'D':
-      return '#c935f2';
+      return '#8e44ad';
       break;
     }
 }
@@ -266,4 +264,11 @@ function flatten(root) {
 
   root.size = recurse(root);
   return nodes;
+}
+
+function transform() {
+  return d3.zoomIdentity
+      .translate(width / 2, height / 2)
+      .scale(8)
+      .translate(-point[0], -point[1]);
 }

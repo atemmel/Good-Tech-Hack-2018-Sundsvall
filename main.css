@@ -8,9 +8,13 @@ svg {
   pointer-events: all;
 }
 
+.title {
+  cursor: pointer;
+}
+
 .node {
   position: absolute;
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .binding {
