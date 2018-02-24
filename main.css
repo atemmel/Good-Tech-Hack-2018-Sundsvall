@@ -77,3 +77,15 @@ svg {
   height: 100%;
   z-index: 0;
 }
+
+#search-box {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 2%;
+}
+
+#search {
+
+
+}
