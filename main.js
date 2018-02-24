@@ -72,7 +72,7 @@ function generateNodes()
                     {
                         "depth":"2",
                         "group":"D",
-                        "name":"J"
+                        "name":"K"
                     }
                 ]
             }
@@ -147,6 +147,9 @@ function generateNodes()
         .attr("dy", ".35em")
         .style("fill", color_node_text)
         .style("font-family", "Roboto, sans-serif")
+        .style("paint-order", "stroke")
+        .style("stroke", "#333333")
+        .style("stroke-width", "2px")
         .text(function(d) { return d.name; });
 
     var force = d3.layout.force()
