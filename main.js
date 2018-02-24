@@ -160,11 +160,12 @@ function generateNodes()
       .on("tick", tick)
       .charge(-500)
       .linkDistance(function(link){
-        var dist = 200 - (50)*(link.target.depth);
-        return dist;
+        var dist = getLine(link);
+        console.log(dist);
+        return (120*dist-30);
       })
       .friction(.8)
-      .gravity(-0.001)
+      .gravity(-0.01)
       .size([w, h]);
 
 
