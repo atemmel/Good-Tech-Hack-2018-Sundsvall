@@ -5,7 +5,7 @@ let color_node_text     = '#DDDDDD';
 let color_binding       = '#666666';
 
 var link, node, title ;
-
+let rad = 100;
 function generateNodes()
 {
 
@@ -143,7 +143,10 @@ function generateNodes()
     title.enter()
         .append("text")
         .attr("class", "title")
-        .attr("font-size", 15 + "px")
+        .attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; })
+
+        .attr("font-size", getFontsize + "px")
         .attr("text-anchor", "middle")
         .attr("dy", ".35em")
         .style("fill", color_node_text)
@@ -177,7 +180,7 @@ function generateNodes()
 
 function getRadius(node)
 {
-  return 100 * (2/5)**(node.depth.valueOf());
+  return rad * (2/5)**(node.depth.valueOf());
 }
 
 function getOutline(node)
@@ -191,6 +194,14 @@ function getLine(link)
 {
   var width = getOutline(link.target);
   return width;
+}
+
+function getFontsize(title)
+{
+  var fSize = getRadius(title);
+  fSize *= 3/10;
+  console.log(fSize);
+  return fSize;
 }
 
 function update(force, nodes, links, link) {
