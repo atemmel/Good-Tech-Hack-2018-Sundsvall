@@ -1,8 +1,7 @@
-let color_node_fill     = '#444444';
-let color_node_outline  = '#666666';
-let color_node_text     = '#DDDDDD';
+let color_node_outline  = '#7f8c8d';
+let color_node_text     = '#ecf0f1';
 
-let color_binding       = '#666666';
+let color_binding       = '#7f8c8d';
 
 var link, node, title ;
 
@@ -148,7 +147,7 @@ function generateNodes()
         .style("fill", color_node_text)
         .style("font-family", "Roboto, sans-serif")
         .style("paint-order", "stroke")
-        .style("stroke", "#333333")
+        .style("stroke", "#2c3e50")
         .style("stroke-width", "2px")
         .text(function(d) { return d.name; })
         .on("click", click)
@@ -228,19 +227,19 @@ function color(d) {
       break;
 
     case 'A':
-      return '#108bef';
+      return '#3498db';
       break;
 
     case 'B':
-      return '#0fef13';
+      return '#2ecc71';
       break;
 
     case 'C':
-      return '#ef380f';
+      return '#e74c3c';
       break;
 
     case 'D':
-      return '#c935f2';
+      return '#8e44ad';
       break;
     }
 }
