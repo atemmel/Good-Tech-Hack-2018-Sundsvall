@@ -17,7 +17,7 @@ function generateNodes()
             {
                 "depth":"1",
                 "group":"A",
-                "name":"A"
+                "name":"HEJ JAG HETER ANDREAS XD"
             },
             {
                 "depth":"1",
@@ -151,10 +151,10 @@ function generateNodes()
         .on("click", click)
         .style("stroke-width", function(d) {
           var radius = getRadius(d);
-          return (Math.min(2 * radius, (2 * radius - 8) / this.getComputedTextLength() * 12))/20 + "px"; })
+          return (Math.min(  radius, (radius - 8) / this.getComputedTextLength() * 30))/20 + "px"; })
         .style("font-size", function(d) {
           var radius = getRadius(d);
-          return Math.min(2 * radius, (2 * radius - 8) / this.getComputedTextLength() * 12) + "px"; });
+          return Math.min( radius, ( radius - 8) / this.getComputedTextLength() * 30 ) + "px"; });
 
     var force = d3.layout.force()
       .on("tick", tick)
