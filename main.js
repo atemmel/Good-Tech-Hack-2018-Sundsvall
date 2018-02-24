@@ -4,7 +4,7 @@ let color_node_text     = '#ecf0f1';
 let color_binding       = '#7f8c8d';
 
 var link, node, title, w = window.outerWidth, h = window.outerHeight ;
-let rad = 100;
+let rad = 50;
 function generateNodes()
 {
 
@@ -12,66 +12,66 @@ function generateNodes()
     {
         "depth":"0",
         "group":"Root",
-        "name":"Root",
+        "name":"Bil Model Deluxe",
         "children":[
             {
                 "depth":"1",
                 "group":"A",
-                "name":"HEJ JAG HETER ANDREAS XD"
+                "name":"[Koncept]\nKrockkudde"
             },
             {
                 "depth":"1",
                 "group":"B",
-                "name":"BÖG",
+                "name":"[Koncept]\nMotor",
                 "children":[
                     {
                         "depth":"2",
                         "group":"B",
-                        "name": "C"
+                        "name": "[Prototyp]\nDiesel"
                     },
                     {
                         "depth":"2",
                         "group":"B",
-                        "name": "D",
+                        "name": "[Prototyp]\nEl",
                         "children":[
                             {
                                 "depth":"3",
                                 "group":"B",
-                                "name": "E"
+                                "name": "[Produkt]\nVersion 1"
                             },
                             {
                                 "depth":"3",
                                 "group":"B",
-                                "name": "F"
+                                "name": "[Produkt]\nVersion 2"
                             }
                         ]
                     },
                     {
                         "depth":"2",
                         "group":"B",
-                        "name":"G"
+                        "name":"[Prototyp]\nBensin"
                     }
                 ]
             },
             {
                 "depth":"1",
                 "group":"C",
-                "name":"H"
+                "name":"[Koncept]\nAircondition"
             },
             {
                 "depth":"1",
                 "group":"D",
-                "name":"I",
+                "name":"[Koncept]\nChassi",
                 "children":[
                     {
                         "depth":"2",
                         "group":"D",
-                        "name":"J"
+                        "name":"[Protoyp]\nTitan-legering"
                     },
                     {
                         "depth":"2",
                         "group":"D",
-                        "name":"K"
+                        "name":"[Prototyp]\nStål"
                     }
                 ]
             }
@@ -151,10 +151,10 @@ function generateNodes()
         .on("click", click)
         .style("stroke-width", function(d) {
           var radius = getRadius(d);
-          return (Math.min(  radius, (radius - 8) / this.getComputedTextLength() * 30))/20 + "px"; })
+          return (Math.min(  radius, (radius - 1) / this.getComputedTextLength() * 30))/20 + "px"; })
         .style("font-size", function(d) {
           var radius = getRadius(d);
-          return Math.min( radius, ( radius - 8) / this.getComputedTextLength() * 30 ) + "px"; });
+          return Math.min( radius, ( radius - 1) / this.getComputedTextLength() * 30 ) + "px"; });
 
     var force = d3.layout.force()
       .on("tick", tick)
@@ -181,7 +181,14 @@ function generateNodes()
 
 function getRadius(node)
 {
-  return rad * (2/5)**(node.depth.valueOf());
+  if(node.depth==0)
+  {
+    return 100;
+  }
+  else
+  {
+    return rad * (1/2)**(node.depth.valueOf());
+  }
 }
 
 function getOutline(node)
