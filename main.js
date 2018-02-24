@@ -266,6 +266,7 @@ function color(d) {
 // Toggle children on click.
 function click(d) {
 
+  show(d);
   centerNode(d);
   //alert(d.name);
   //update();
@@ -310,4 +311,16 @@ function centerNode(where){
   link.transition()
   .duration(500)
   .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
+}
+
+function show(d)
+{
+  var box = document.getElementById('messagebox');
+  
+  if(d == root) {
+
+    return;
+  }
+
+  box.innerHTML = d.desc;
 }
