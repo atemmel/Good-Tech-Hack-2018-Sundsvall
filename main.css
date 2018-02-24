@@ -10,6 +10,7 @@ svg {
 
 .node {
   position: absolute;
+    cursor: pointer;
 }
 
 .binding {
