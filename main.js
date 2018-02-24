@@ -329,7 +329,7 @@ function show(d)
 {
   var box = document.getElementById('messagebox');
 
-  if(d == root) {
+  if(d == root || d == following) {
     box.style.opacity = 0;
     return;
   }

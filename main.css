@@ -41,7 +41,7 @@ svg {
 
 #messagebox {
   transition: 0.5s;
-  
+
   opacity: 0;
   border-radius: 6%;
   border: 2px solid #ecf0f1;
@@ -54,7 +54,8 @@ svg {
   color: #ecf0f1;
   top: 5%;
   right: 5%;
-  width: 20%;
+  max-width: 20%;
+  min-width: 344px;
 }
 
 #takeMeToChurch, #weBuiltThisCity{
