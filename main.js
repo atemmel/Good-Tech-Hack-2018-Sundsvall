@@ -21,36 +21,43 @@ function generateNodes()
     {
         "depth":"0",
         "group":"Root",
+		"description":"Det här är en bil som skall ha hög kvalité, vara bränslesnål och ha låga utsläpp. Säkerheten och designen är viktiga aspekter.",
         "name":"Bil Model Deluxe",
         "children":[
             {
                 "depth":"1",
                 "group":"A",
+				"description": "En krockkudde för öka säkerheten i bilen",
                 "name":"[Koncept]\nKrockkudde"
             },
             {
                 "depth":"1",
                 "group":"B",
+				"description": "Bilen bör ha en bra motor med lång livslängd men den skall även vara effektiva för minska utsläppen.",
                 "name":"[Koncept]\nMotor",
                 "children":[
                     {
                         "depth":"2",
                         "group":"B",
+						"description":"Diesel har i regel lägre utsläpp än bensindrivna motorer när det kommer till längre sträckor",
                         "name": "[Prototyp]\nDiesel"
                     },
                     {
                         "depth":"2",
                         "group":"B",
+						"description":"De senste och mordernaste är elbilarna, inga utsläpp alls och bra med vridmoment",
                         "name": "[Prototyp]\nEl",
                         "children":[
                             {
                                 "depth":"3",
                                 "group":"B",
-                                "name": "[Produkt]\nVersion 1"
+								"description":"En utav två modeller som togs fram ur grenen el-motorer",
+								"name": "[Produkt]\nVersion 1"
                             },
                             {
                                 "depth":"3",
                                 "group":"B",
+								"description":"En utav två modeller som togs fram ur grenen el-motorer",
                                 "name": "[Produkt]\nVersion 2"
                             }
                         ]
@@ -58,6 +65,7 @@ function generateNodes()
                     {
                         "depth":"2",
                         "group":"B",
+						"description": "Bensindrivna motorer är billigare och har haft en bra utvecklingkurva senaste tiden. lagom snål och lagom billig",
                         "name":"[Prototyp]\nBensin"
                     }
                 ]
@@ -65,21 +73,25 @@ function generateNodes()
             {
                 "depth":"1",
                 "group":"C",
+				"description":"Airkondition ökar komforten i bilen",
                 "name":"[Koncept]\nAircondition"
             },
             {
                 "depth":"1",
                 "group":"D",
+				"description":"",
                 "name":"[Koncept]\nChassi",
                 "children":[
                     {
                         "depth":"2",
                         "group":"D",
+						"description":"",
                         "name":"[Protoyp]\nTitan-legering"
                     },
                     {
                         "depth":"2",
                         "group":"D",
+						"description":"",
                         "name":"[Prototyp]\nStål"
                     }
                 ]
