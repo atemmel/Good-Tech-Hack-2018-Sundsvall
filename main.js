@@ -65,7 +65,7 @@ function generateNodes()
                     {
                         "depth":"2",
                         "group":"B",
-						"description": "Vi byggde aldrig klart prototypen till bensinmotorn då vi insåg att datorsimuleringarna och uträkningarna vid utveklingen av motorn pekade på för höga utsläpp.",
+						"description":"Vi byggde aldrig klart prototypen till bensinmotorn då vi insåg att datorsimuleringarna och uträkningarna vid utveklingen av motorn pekade på för höga utsläpp.",
                         "name":"[Prototyp]\nBensin"
                     }
                 ]
