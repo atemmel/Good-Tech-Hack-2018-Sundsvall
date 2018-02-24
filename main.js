@@ -65,7 +65,7 @@ function generateNodes()
                     {
                         "depth":"2",
                         "group":"B",
-						"description": "Vi byggde aldrig klart prototypen till bensinmotorn då vi insåg att datorsimuleringarna och uträkningarna vid utveklingen av motorn pekade på för höga utsläpp.",
+						"description": "Vi byggde aldrig klart prototypen till bensinmotorn då vi insåg att datorsimuleringarna och uträkningarna vid utvecklingen av motorn pekade på för höga utsläpp.",
                         "name":"[Prototyp]\nBensin"
                     }
                 ]
@@ -229,6 +229,7 @@ function getLine(link)
 function update(force, nodes, links, link) {
 
   // Restart the force layout.
+
   force
     .nodes(nodes)
     .links(links)
@@ -304,7 +305,6 @@ function centerNode(where){
   if(following == where)
   {
     where = root;
-
   }
 
   following = where;
