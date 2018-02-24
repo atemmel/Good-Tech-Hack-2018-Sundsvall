@@ -373,5 +373,5 @@ function createStar(x, y, index)
 {
   return '<polygon points="' + (0 + x) +','+(50 + y) + ' ' + (30 + x) + ',' + (30 + y) + ' ' + (50 + x)+','+(0 + y)+ ' ' + (70 + x)+','+
   (30 + y)+ ' ' + (100 + x)+','+(50 + y)+ ' ' + (70 + x)+','+(70 + y)+ ' ' + (50 + x)+','+(100 + y) + ' ' + (30 + x)+','
-  + (70 + y) + '" id="star' + index +'" style="fill:rgb(62,83,104); transition: 0.5s ease;" />';
+  + (70 + y) + '" id="star' + index +'" style="fill:rgb(62,83,104); transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);" />';
 }
